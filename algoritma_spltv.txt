@@ -1,1 +1,18 @@
+Judul: Algoritma Penyelesaian Sistem Persamaan Linear Tiga Variabel (SPLTV) Menggunakan Metode Eliminasi Gauss
+Nama: Yunita Selfince Salukh | NIM: 202511420094
 
+1. Inisialisasi Matriks Augmented:
+   - Definisikan matriks koefisien A (ukuran 3x3) dan vektor konstanta b (ukuran 3x1).
+   - Gabungkan keduanya menjadi matriks augmented [A | b] berukuran 3x4.
+
+2. Proses Eliminasi Maju (Forward Elimination):
+   - Lakukan iterasi baris untuk mengubah matriks menjadi bentuk segitiga atas.
+   - Pastikan elemen pivot tidak bernilai nol untuk menghindari error pembagian dengan nol.
+
+3. Proses Substitusi Balik (Back Substitution):
+   - Hitung nilai variabel z dari baris terbawah (baris ke-3).
+   - Substitusikan nilai z ke baris ke-2 untuk mendapatkan nilai y.
+   - Substitusikan nilai y dan z ke baris ke-1 untuk mendapatkan nilai x.
+
+4. Output:
+   - Tampilkan hasil nilai x, y, dan z secara terstruktur.
