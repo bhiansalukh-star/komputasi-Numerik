@@ -1,1 +1,17 @@
+Judul: Algoritma Pencarian Akar Persamaan Non-Linear Menggunakan Metode Bisection (Bagi Dua)
+Nama: Yunita Selfince Salukh | NIM: 202511420094
 
+1. Definisi Fungsi dan Interval:
+   - Tentukan fungsi f(x) yang akan dicari akarnya.
+   - Tentukan batas bawah (a) dan batas atas (b) sedemikian rupa sehingga f(a) * f(b) < 0 (memiliki akar di antara interval tersebut).
+   - Tentukan toleransi error (tol) dan jumlah maksimum iterasi (N_max).
+
+2. Proses Iterasi Bisection:
+   - Hitung titik tengah (c): c = (a + b) / 2
+   - Evaluasi nilai f(c).
+   - Jika f(c) == 0 atau (b - a) / 2 < tol, maka c adalah akar yang dicari, hentikan iterasi.
+   - Jika f(a) * f(c) < 0, akar berada di sebelah kiri, maka ubah batas atas: b = c.
+   - Jika tidak, akar berada di sebelah kanan, maka ubah batas bawah: a = c.
+
+3. Output:
+   - Tampilkan nilai akar hampiran (c) beserta jumlah iterasi yang dilakukan.
