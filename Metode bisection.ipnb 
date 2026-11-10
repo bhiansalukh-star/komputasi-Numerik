@@ -1,0 +1,79 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyN+iDK69EYoK23WjCyizW8V",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/bhiansalukh-star/komputasi-Numerik/blob/main/Metode%20bisection.ipnb%20\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "nLaS2bFDNM0l"
+      },
+      "outputs": [],
+      "source": [
+        "# Cell 6: Definisi Fungsi f(x) dan Implementasi Metode Bisection\n",
+        "def f(x):\n",
+        "    # Contoh fungsi: f(x) = x^3 - x - 2\n",
+        "    return x**3 - x - 2\n",
+        "\n",
+        "def bisection_method(a, b, tol=1e-6, max_iter=100):\n",
+        "    # Validasi awal apakah interval mengapit akar\n",
+        "    if f(a) * f(b) >= 0:\n",
+        "        raise ValueError(\"Fungsi harus memiliki tanda yang berlawanan pada titik a dan b.\")\n",
+        "\n",
+        "    c = a\n",
+        "    print(f\"{'Iterasi':<8} {'a':<10} {'b':<10} {'c (Tengah)':<10} {'f(c)':<10}\")\n",
+        "    print(\"-\" * 50)\n",
+        "\n",
+        "    for i in range(max_iter):\n",
+        "        c = (a + b) / 2.0\n",
+        "        fc = f(c)\n",
+        "\n",
+        "        print(f\"{i+1:<8} {a:<10.5f} {b:<10.5f} {c:<10.5f} {fc:<10.5f}\")\n",
+        "\n",
+        "        # Cek kriteria konvergensi (toleransi atau akar tepat)\n",
+        "        if abs(fc) < 1e-12 or (b - a) / 2.0 < tol:\n",
+        "            break\n",
+        "\n",
+        "        # Menentukan interval selanjutnya\n",
+        "        if f(a) * fc < 0:\n",
+        "            b = c\n",
+        "        else:\n",
+        "            a = c\n",
+        "\n",
+        "    return c\n",
+        "\n",
+        "# Menjalankan metode bisection pada interval [1, 2]\n",
+        "a_batas = 1.0\n",
+        "b_batas = 2.0\n",
+        " akar_hasil = bisection_method(a_batas, b_batas)\n",
+        " # Cell 7: Menampilkan Hasil Akhir Akar Bisection\n",
+        "print(\"\\n=== HASIL AKHIR METODE BISECTION ===\")\n",
+        "print(f\"Akar hampiran persamaan ditemukan pada x = {akar_hasil:.6f}\")"
+      ]
+    }
+  ]
+}
