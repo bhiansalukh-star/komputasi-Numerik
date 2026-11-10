@@ -1,0 +1,11 @@
+=============================================================
+KUMPULAN RIWAYAT PROMPT AI - TUGAS KOMPUTASI NUMERIK
+Nama    : Yunita Selfince Salukh
+NIM     : 202511420094
+Prodi   : Teknik Informatika - Universitas Dr. Soetomo
+=============================================================
+
+1. "Tolong buatkan algoritma penyelesaian Sistem Persamaan Linear Tiga Variabel (SPLTV) menggunakan metode Eliminasi Gauss secara terstruktur."
+2. "Tolong buatkan algoritma pencarian akar persamaan non-linear menggunakan Metode Bisection (Bagi Dua)."
+3. "Tolong buatkan kode Python terstruktur dalam cell-cell untuk Google Colab yang mencakup SPLTV dan Bisection lengkap dengan penjelasan kodenya."
+4. "Berikan format penulisan file links.txt dan prompts.txt untuk disimpan di repository GitHub."
