@@ -5,6 +5,6 @@ Program Studi: Teknik Informatika - Universitas Dr. Soetomo
 Link Akun & Repository:
 - GitHub Profile: https://github.com/bhiansalukh-star
 - Repository Komputasi Numerik: https://github.com/bhiansalukh-star/komputasi-Numerik
-- Google Colab Notebook SPLTV: [Masukkan link Google Colab SPLTV Anda di sini]
-- Google Colab Notebook Bisection: [Masukkan link Google Colab Bisection Anda di sini]
-- LinkedIn Profile: [Masukkan link profil LinkedIn Anda di sini]
+- Google Colab Notebook SPLTV: [Masukkan link Google Colab SPLTV Anda]
+- Google Colab Notebook Bisection: [Masukkan link Google Colab Bisection Anda]
+- LinkedIn Profile: [Masukkan link profil LinkedIn Anda]
