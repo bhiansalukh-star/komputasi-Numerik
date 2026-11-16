@@ -1,0 +1,172 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "name": "komputasi_numerik_SPL_3_Variabel",
+      "authorship_tag": "ABX9TyMYjDwevT688VmeLVJOtX/K",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/bhiansalukh-star/komputasi-Numerik/blob/main/komputasi_numerik_SPL_3_Variabel_ipynb.\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 4,
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "collapsed": true,
+        "id": "0TlLyJaJ96J7",
+        "outputId": "3db92dee-9a8c-4821-9679-2ee9dae6ac7b"
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Matriks Koefisien (A):\n",
+            "[[ 2.  1. -1.]\n",
+            " [-3. -1.  2.]\n",
+            " [-2.  1.  2.]]\n",
+            "\n",
+            "Vektor Konstanta (b):\n",
+            "[  8. -11.  -3.]\n"
+          ]
+        }
+      ],
+      "source": [
+        "# Cell 1: Import library NumPy dan definisikan matriks persamaan SPLTV\n",
+        "import numpy as np\n",
+        "\n",
+        "# Contoh SPLTV:\n",
+        "# 2x + y - z = 8\n",
+        "# -3x - y + 2z = -11\n",
+        "# -2x + y + 2z = -3\n",
+        "A = np.array([\n",
+        "    [2.0, 1.0, -1.0],\n",
+        "    [-3.0, -1.0, 2.0],\n",
+        "    [-2.0, 1.0, 2.0]\n",
+        "])\n",
+        "b = np.array([8.0, -11.0, -3.0])\n",
+        "\n",
+        "print(\"Matriks Koefisien (A):\")\n",
+        "print(A)\n",
+        "print(\"\\nVektor Konstanta (b):\")\n",
+        "print(b)\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "# Cell 2: Fungsi Eliminasi Gauss dengan Partial Pivoting dan Back Substitution\n",
+        "def selesaikan_spltv(A_mat, b_vec):\n",
+        "    n = len(b_vec)\n",
+        "    # Menggabungkan matriks A dan b menjadi Augmented Matrix (M) bertipe float\n",
+        "    M = np.hstack([A_mat.astype(float), b_vec.astype(float).reshape(-1, 1)])\n",
+        "    print(\"Matriks Augmented Awal [A | b]:\")\n",
+        "    print(M)\n",
+        "\n",
+        "    # 1. Proses Forward Elimination dengan Partial Pivoting\n",
+        "    for i in range(n):\n",
+        "        # Mencari baris dengan nilai mutlak terbesar di kolom i\n",
+        "        baris_max = np.argmax(np.abs(M[i:, i])) + i\n",
+        "        # Tukar baris jika baris dengan pivot terbesar bukan baris saat ini\n",
+        "        if baris_max != i:\n",
+        "            M[[i, baris_max]] = M[[baris_max, i]]\n",
+        "\n",
+        "        # Cek apakah nilai pivot mendekati nol (toleransi numerik)\n",
+        "        if np.abs(M[i, i]) < 1e-9:\n",
+        "            if np.abs(M[i, -1]) > 1e-9:\n",
+        "                raise ValueError(\"Sistem Persamaan Linear tidak memiliki solusi (Inconsistent/Singular).\")\n",
+        "            else:\n",
+        "                raise ValueError(\"Sistem Persamaan Linear memiliki solusi tak hingga (Dependent/Singular).\")\n",
+        "\n",
+        "        # Eliminasi elemen di bawah pivot\n",
+        "        for j in range(i + 1, n):\n",
+        "            faktor = M[j, i] / M[i, i]\n",
+        "            M[j, i:] = M[j, i:] - faktor * M[i, i:]\n",
+        "\n",
+        "    print(\"\\nMatriks Setelah Eliminasi Maju (Segitiga Atas):\")\n",
+        "    print(M)\n",
+        "\n",
+        "    # 2. Proses Back Substitution\n",
+        "    x = np.zeros(n)\n",
+        "    for i in range(n - 1, -1, -1):\n",
+        "        if np.abs(M[i, i]) < 1e-9:\n",
+        "            raise ValueError(\"Matriks terdeteksi singular saat substitusi balik.\")\n",
+        "        x[i] = (M[i, -1] - np.dot(M[i, i+1:n], x[i+1:n])) / M[i, i]\n",
+        "\n",
+        "    return x\n",
+        ""
+      ],
+      "metadata": {
+        "id": "7qSIB6vCrAZJ"
+      },
+      "execution_count": 7,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "# Cell 3: Menjalankan fungsi penyelesaian SPLTV dan menampilkan hasil\n",
+        "try:\n",
+        "    hasil_solusi = selesaikan_spltv(A, b)\n",
+        "    print(\"\\n=== HASIL AKHIR PENYELESAIAN SPLTV ===\")\n",
+        "    print(f\"Nilai x = {hasil_solusi[0]:.2f}\")\n",
+        "    print(f\"Nilai y = {hasil_solusi[1]:.2f}\")\n",
+        "    print(f\"Nilai z = {hasil_solusi[2]:.2f}\")\n",
+        "except ValueError as e:\n",
+        "    print(f\"\\n[TERDETEKSI ERROR/SINGULAR]: {e}\")"
+      ],
+      "metadata": {
+        "id": "AdCAx1WFrL7A",
+        "outputId": "6f8ba6f9-2bdd-407f-b788-eba61755727b",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        }
+      },
+      "execution_count": 8,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Matriks Augmented Awal [A | b]:\n",
+            "[[  2.   1.  -1.   8.]\n",
+            " [ -3.  -1.   2. -11.]\n",
+            " [ -2.   1.   2.  -3.]]\n",
+            "\n",
+            "Matriks Setelah Eliminasi Maju (Segitiga Atas):\n",
+            "[[ -3.          -1.           2.         -11.        ]\n",
+            " [  0.           1.66666667   0.66666667   4.33333333]\n",
+            " [  0.           0.           0.2         -0.2       ]]\n",
+            "\n",
+            "=== HASIL AKHIR PENYELESAIAN SPLTV ===\n",
+            "Nilai x = 2.00\n",
+            "Nilai y = 3.00\n",
+            "Nilai z = -1.00\n"
+          ]
+        }
+      ]
+    }
+  ]
+}
