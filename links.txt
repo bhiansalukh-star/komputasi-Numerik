@@ -6,5 +6,5 @@ Link Akun & Repository:
 - GitHub Profile: https://github.com/bhiansalukh-star
 - Repository Komputasi Numerik: https://github.com/bhiansalukh-star/komputasi-Numerik
 - Google Colab Notebook SPLTV: https://colab.research.google.com/github/bhiansalukh-star/komputasi-Numerik/blob/main/komputasi_numerik_SPL_3_Variabel.ipynb
-- Google Colab Notebook Bisection: [Masukkan link Google Colab Bisection Anda]
+- Google Colab Notebook Bisection: https://colab.research.google.com/github/bhiansalukh-star/komputasi-Numerik/blob/main/bisection_code.ipynb
 - LinkedIn Profile: [Masukkan link profil LinkedIn Anda]
