@@ -8,3 +8,4 @@ Link Akun & Repository:
 - Google Colab Notebook SPLTV: https://colab.research.google.com/github/bhiansalukh-star/komputasi-Numerik/blob/main/komputasi_numerik_SPL_3_Variabel.ipynb
 - Google Colab Notebook Bisection: https://colab.research.google.com/github/bhiansalukh-star/komputasi-Numerik/blob/main/bisection_code.ipynb
 - LinkedIn Profile: https://www.linkedin.com/in/bhian-salukh-018a983a0
+-Google Drive:https://drive.google.com/drive/folders/1XrHIMl7P4vZ9SDSD04BlMyMDHjQ2_Xej 
